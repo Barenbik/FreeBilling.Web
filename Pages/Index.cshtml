@@ -1,0 +1,22 @@
+﻿@page
+@model FreeBilling.Web.Pages.IndexModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Free Billing</h1>
+<p>Free Billing is a solution to billing for small companies and individuals.</p>
+
+@if (Model.Customers is not null && Model.Customers.Count() > 0)
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.CompanyName</li>
+        }
+    </ul>
+}
+else
+{
+    <div>No customers found...</div>
+}
