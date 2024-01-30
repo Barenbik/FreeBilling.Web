@@ -1,4 +1,5 @@
 ﻿using FreeBilling.Data.Entities;
+using FreeBilling.Web.Apis;
 
 namespace FreeBilling.Web.Data
 {
@@ -7,7 +8,9 @@ namespace FreeBilling.Web.Data
 		Task<IEnumerable<Customer>> GetCustomers();
 		Task<IEnumerable<Customer>> GetCustomersWithAddresses();
 		Task<Customer?> GetCustomer(int id);
+		Task<TimeBill?> GetTimeBill(int id);
 		Task<IEnumerable<Employee>> GetEmployees();
+		void AddEntity<T>(T entity) where T : notnull;
 		Task<bool> SaveChanges();
 	}
 }

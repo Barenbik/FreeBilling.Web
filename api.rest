@@ -6,4 +6,21 @@ GET http://localhost:5268/api/customers?withAddresses=true
 
 ###
 
-GET http://localhost:5268/api/customers/3
+GET http://localhost:5268/api/customers/2
+
+###
+
+GET http://localhost:5268/api/timebills/1
+
+###
+
+POST http://localhost:5268/api/timebills
+Content-Type: application/json
+
+{
+  "hours": 2.5,
+  "billingRate": 125.00,
+  "date": "2023-05-05",
+  "clientRequested": true,
+  "workPerformed": "I did a thing..."
+}

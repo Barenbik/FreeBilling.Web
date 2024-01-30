@@ -1,4 +1,5 @@
 using System.Reflection;
+using FreeBilling.Web.Apis;
 using FreeBilling.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,9 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 app.MapRazorPages();
+
+TimeBillsApi.Register(app);
+
 app.MapControllers();
 
 app.Run();
