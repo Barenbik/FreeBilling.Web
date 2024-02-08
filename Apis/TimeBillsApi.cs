@@ -1,6 +1,9 @@
-﻿using FreeBilling.Data.Entities;
+﻿using FluentValidation;
+using FreeBilling.Data.Entities;
 using FreeBilling.Web.Data;
 using FreeBilling.Web.Models;
+using FreeBilling.Web.Validators;
+using System.ComponentModel.DataAnnotations;
 
 namespace FreeBilling.Web.Apis;
 
@@ -13,7 +16,8 @@ public static class TimeBillsApi
 		group.MapGet("{id:int}", GetTimeBill)
 			.WithName("GetTimeBill");
 
-		group.MapPost("", PostTimeBill);
+		group.MapPost("", PostTimeBill)
+			.AddEndpointFilter<ValidateEndpointFilter<TimeBillModel>>();
 	}
 
 	public static async Task<IResult> GetTimeBill(IBillingRepository repository, int id)
@@ -28,7 +32,7 @@ public static class TimeBillsApi
 
 	public static async Task<IResult> PostTimeBill(IBillingRepository repository, TimeBillModel model)
 	{
-		var newEntity = new TimeBill()
+        var newEntity = new TimeBill()
 		{
 			CustomerId = model.CustomerId,
 			EmployeeId = model.EmployeeId,
